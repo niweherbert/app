@@ -8,7 +8,6 @@ import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { toast } from 'sonner';
 
 export const Contact = () => {
-  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
