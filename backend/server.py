@@ -84,6 +84,34 @@ async def get_status_checks():
     
     return status_checks
 
+# Contact form endpoints
+@api_router.post("/contacts", response_model=dict)
+async def create_contact(contact_data: ContactCreate):
+    """Submit a contact form inquiry"""
+    try:
+        contact_obj = Contact(**contact_data.dict())
+        result = await db.contacts.insert_one(contact_obj.dict())
+        
+        logger.info(f"New contact submission: {contact_obj.name} - {contact_obj.email}")
+        
+        return {
+            "success": True,
+            "message": "Contact request submitted successfully",
+            "id": contact_obj.id
+        }
+    except Exception as e:
+        logger.error(f"Error creating contact: {str(e)}")
+        return {
+            "success": False,
+            "message": "Failed to submit contact request"
+        }
+
+@api_router.get("/contacts", response_model=List[Contact])
+async def get_contacts():
+    """Get all contact submissions (admin endpoint)"""
+    contacts = await db.contacts.find().sort("timestamp", -1).to_list(1000)
+    return [Contact(**contact) for contact in contacts]
+
 # Include the router in the main app
 app.include_router(api_router)
 
