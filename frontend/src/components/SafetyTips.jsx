@@ -5,7 +5,7 @@ import { AlertCircle } from 'lucide-react';
 
 export const SafetyTips = () => {
   return (
-    <section id="safety" className="py-20 bg-white">
+    <section id="safety" className="py-20 bg-white" data-aos="fade-up">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}

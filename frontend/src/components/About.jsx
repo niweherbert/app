@@ -8,7 +8,7 @@ const statIcons = [Award, Users, Target, TrendingUp];
 
 export const About = () => {
   return (
-    <section id="about" className="py-20 bg-gradient-to-br from-slate-900 to-gray-800 text-white">
+    <section id="about" className="py-20 bg-gradient-to-br from-slate-900 to-gray-800 text-white" data-aos="fade-up">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
